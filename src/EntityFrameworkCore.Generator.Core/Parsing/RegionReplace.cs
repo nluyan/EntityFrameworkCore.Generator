@@ -1,5 +1,7 @@
 using System.Text;
 
+using EntityFrameworkCore.Generator.Options;
+
 namespace EntityFrameworkCore.Generator.Parsing;
 
 public class RegionReplace
@@ -11,14 +13,26 @@ public class RegionReplace
 
     protected RegionParser RegionParser { get; }
 
-    public void MergeFile(string fullPath, string outputContent)
+    #region Modified
+
+    //public void MergeFile(string fullPath, string outputContent)
+    //{
+    //    var originalContent = File.ReadAllText(fullPath);
+
+    //    var finalContent = MergeContent(originalContent, outputContent);
+
+    //    File.WriteAllText(fullPath, finalContent);
+    //}
+
+    public void MergeFile(string fullPath, string outputContent, GeneratorOptions options)
     {
         var originalContent = File.ReadAllText(fullPath);
 
         var finalContent = MergeContent(originalContent, outputContent);
 
-        File.WriteAllText(fullPath, finalContent);
+        options.WriteAllText(fullPath, finalContent);
     }
+    #endregion
 
     public string MergeContent(string originalContent, string outputContent)
     {

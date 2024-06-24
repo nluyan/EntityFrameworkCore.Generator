@@ -1,4 +1,4 @@
-﻿namespace EntityFrameworkCore.Generator;
+namespace EntityFrameworkCore.Generator;
 
 public static class VariableConstants
 {
@@ -6,4 +6,5 @@ public static class VariableConstants
     public const string TableName = "Table.Name";
     public const string EntityName = "Entity.Name";
     public const string ModelName = "Model.Name";
+    public const string EndpointName = "Endpoint.Name";
 }

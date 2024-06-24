@@ -18,6 +18,7 @@ public class Entity : ModelBase, IOptionVariable
         Relationships = new RelationshipCollection();
         Methods = new MethodCollection();
         Models = new ModelCollection();
+        Endpoints = new EndpointCollection();
     }
 
     /// <summary>
@@ -153,6 +154,8 @@ public class Entity : ModelBase, IOptionVariable
     /// The models for this entity.
     /// </value>
     public ModelCollection Models { get; set; }
+
+    public EndpointCollection Endpoints { get; set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether this instance is view.

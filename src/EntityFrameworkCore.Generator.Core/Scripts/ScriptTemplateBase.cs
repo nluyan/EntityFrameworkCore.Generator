@@ -79,9 +79,9 @@ public abstract class ScriptTemplateBase<TVariable>
         }
 
         if (exists && TemplateOptions.Merge && !TemplateOptions.Overwrite)
-            RegionReplace.MergeFile(path, content);
+            RegionReplace.MergeFile(path, content, GeneratorOptions);
         else
-            File.WriteAllText(path, content);
+            GeneratorOptions.WriteAllText(path, content);
     }
 
     protected virtual string ExecuteScript()

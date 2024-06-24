@@ -34,10 +34,17 @@ public abstract class CodeTemplateBase
 
         var output = WriteCode();
 
-        if (File.Exists(fullPath))
-            RegionReplace.MergeFile(fullPath, output);
-        else
-            File.WriteAllText(fullPath, output);
+        #region Modified
+        //if (File.Exists(fullPath))
+        //    RegionReplace.MergeFile(fullPath, output);
+        //else
+        //    File.WriteAllText(fullPath, output);
+
+        //if (File.Exists(fullPath))
+        //    RegionReplace.MergeFile(fullPath, output, Options);
+        //else
+            Options.WriteAllText(fullPath, output);
+        #endregion
     }
 
     public abstract string WriteCode();

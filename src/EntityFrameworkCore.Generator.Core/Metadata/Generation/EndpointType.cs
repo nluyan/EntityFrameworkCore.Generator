@@ -1,11 +1,9 @@
 namespace EntityFrameworkCore.Generator.Metadata.Generation;
-
-public enum ModelType
+public enum EndpointType
 {
-    Read,
     Create,
     Update,
-    #region Modified
+    Delete,
+    Retrieve,
     Search
-    #endregion
 }

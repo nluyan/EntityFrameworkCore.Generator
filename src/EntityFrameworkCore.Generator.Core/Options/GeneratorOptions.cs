@@ -19,6 +19,7 @@ public class GeneratorOptions
         Data = new DataOptions(Variables, null);
         Model = new ModelOptions(Variables, null);
         Script = new ScriptOptions(Variables, null);
+        Endpoint = new EndpointOptions(Variables, null);
     }
 
     [YamlIgnore]
@@ -56,6 +57,8 @@ public class GeneratorOptions
     /// </value>
     public ModelOptions Model { get; }
 
+    public EndpointOptions Endpoint { get; }
+
     /// <summary>
     /// Gets or sets the script template options.
     /// </summary>
@@ -63,4 +66,10 @@ public class GeneratorOptions
     /// The script template options.
     /// </value>
     public ScriptOptions Script { get; }
+
+    #region Modifyed
+
+    public Action<string, string> WriteAllText { get; set; }
+
+    #endregion
 }

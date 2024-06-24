@@ -114,10 +114,14 @@ public class CodeGenerator : ICodeGenerator
         foreach (var entity in entityContext.Entities)
         {
             Options.Variables.Set(entity);
-
-            var directory = Options.Data.Entity.Directory;
+            #region Modified
+            //var directory = Options.Data.Entity.Directory;
+            var directory = Path.Combine(Options.Data.Entity.Directory, entity.EntityClass);
+            Directory.CreateDirectory(directory);
+            #endregion
             var file = entity.EntityClass + ".cs";
             var path = Path.Combine(directory, file);
+            
 
             _logger.LogInformation(File.Exists(path)
                 ? "Updating entity class: {file}"

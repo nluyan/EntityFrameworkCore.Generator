@@ -17,6 +17,7 @@ public class ModelOptions : OptionsBase
         Read = new ReadModelOptions(Variables, Prefix);
         Create = new CreateModelOptions(Variables, Prefix);
         Update = new UpdateModelOptions(Variables, Prefix);
+        Search = new SearchModelOptions(Variables, Prefix);
         Mapper = new MapperClassOptions(Variables, Prefix);
         Validator = new ValidatorClassOptions(Variables, Prefix);
     }
@@ -52,6 +53,14 @@ public class ModelOptions : OptionsBase
     /// The update model options.
     /// </value>
     public UpdateModelOptions Update { get; }
+
+    /// <summary>
+    /// Gets or sets the update model options.
+    /// </summary>
+    /// <value>
+    /// The update model options.
+    /// </value>
+    public SearchModelOptions Search { get; }
 
     /// <summary>
     /// Gets or sets the view model mapper options.

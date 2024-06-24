@@ -81,6 +81,8 @@ public class ModelGenerator
 
             var entity = GetEntity(entityContext, table);
             GetModels(entity);
+
+            GetEndpoints(entity);
         }
 
         _options.Variables.Remove(VariableConstants.TableName);
@@ -503,7 +505,8 @@ public class ModelGenerator
             CreateModel(entity, _options.Model.Create, ModelType.Create);
         if (_options.Model.Update.Generate)
             CreateModel(entity, _options.Model.Update, ModelType.Update);
-
+        if (_options.Model.Search.Generate)
+            CreateModel(entity, _options.Model.Search, ModelType.Search);
         if (entity.Models.Count > 0)
         {
             var mapperNamespace = _options.Model.Mapper.Namespace;
@@ -519,6 +522,64 @@ public class ModelGenerator
         _options.Variables.Remove(entity);
 
         entity.Models.IsProcessed = true;
+    }
+
+    private void GetEndpoints(Entity entity)
+    {
+        if (entity == null || entity.Endpoints.IsProcessed)
+            return;
+
+        _options.Variables.Set(entity);
+
+        if (_options.Endpoint.Generate)
+        {
+            CreateEndpoint(entity, _options.Endpoint.Create, EndpointType.Create);
+            CreateEndpoint(entity, _options.Endpoint.Delete, EndpointType.Delete);
+            CreateEndpoint(entity, _options.Endpoint.Update, EndpointType.Update);
+            CreateEndpoint(entity, _options.Endpoint.Search, EndpointType.Search);
+            CreateEndpoint(entity, _options.Endpoint.Retrieve, EndpointType.Retrieve);
+        }
+
+        _options.Variables.Remove(entity);
+
+        entity.Endpoints.IsProcessed = true;
+    }
+
+    private void CreateEndpoint<TOption>(Entity entity, TOption options, EndpointType endpointType)
+    where TOption : ModelOptionsBase
+    {
+        if (IsIgnored(entity, options, _options.Model.Shared))
+            return;
+
+        var @namespace = options.Namespace;
+
+        var endpoint = new Endpoint
+        {
+            Entity = entity,
+            EndpointType = endpointType,
+            BaseClass = options.BaseClass,
+            Namespace = @namespace,
+            ClassName = endpointType + "Endpoint",
+            RequestModelName = endpointType switch
+            {
+                EndpointType.Create => entity.Models.Single(c => c.ModelType == ModelType.Create).ModelClass,
+                EndpointType.Update => entity.Models.Single(c => c.ModelType == ModelType.Update).ModelClass,
+                EndpointType.Search => entity.Models.Single(c => c.ModelType == ModelType.Search).ModelClass,
+                _ => "BaseModel"
+            },
+            ResponseModelName = endpointType switch
+            {
+                EndpointType.Search => $"List<{entity.Models.Single(c => c.ModelType == ModelType.Read).ModelClass}>",
+                EndpointType.Retrieve => entity.Models.Single(c => c.ModelType == ModelType.Read).ModelClass,
+                _ => "BaseModel"
+            }
+        };
+
+        _options.Variables.Set(endpoint);
+
+        entity.Endpoints.Add(endpoint);
+
+        _options.Variables.Remove(endpoint);
     }
 
     private void CreateModel<TOption>(Entity entity, TOption options, ModelType modelType)

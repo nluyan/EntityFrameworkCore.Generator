@@ -22,7 +22,11 @@ public class Property : ModelBase
 
     public Type SystemType { get; set; }
 
-    public bool? IsNullable { get; set; }
+    public bool? IsNullable
+    {
+        get;
+        set;
+    }
 
     public bool IsRequired => IsNullable == false;
 
