@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tracker.Scaffold", "sample\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tracker.Web", "sample\Tracker\Tracker.Web\Tracker.Web.csproj", "{0A75634B-0CD3-434B-AC1C-C40C450F3B88}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkBuilder.Core", "..\thinkbuilder_backend\ThinkBuilder.Core\ThinkBuilder.Core.csproj", "{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -122,6 +124,18 @@ Global
 		{0A75634B-0CD3-434B-AC1C-C40C450F3B88}.Release|x64.Build.0 = Release|Any CPU
 		{0A75634B-0CD3-434B-AC1C-C40C450F3B88}.Release|x86.ActiveCfg = Release|Any CPU
 		{0A75634B-0CD3-434B-AC1C-C40C450F3B88}.Release|x86.Build.0 = Release|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Debug|x64.Build.0 = Debug|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Debug|x86.Build.0 = Debug|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Release|x64.ActiveCfg = Release|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Release|x64.Build.0 = Release|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Release|x86.ActiveCfg = Release|Any CPU
+		{BC7A1A25-3627-4E7F-A8BE-9EAA11111F88}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

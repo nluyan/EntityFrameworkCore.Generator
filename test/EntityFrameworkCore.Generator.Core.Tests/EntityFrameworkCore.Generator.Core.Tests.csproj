@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\EntityFrameworkCore.Generator.Core\EntityFrameworkCore.Generator.Core.csproj" />
+    <ProjectReference Include="..\..\..\thinkbuilder_backend\ThinkBuilder.Core\ThinkBuilder.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

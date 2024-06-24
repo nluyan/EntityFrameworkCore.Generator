@@ -625,10 +625,11 @@ public class ModelGenerator
         if (isFkeyPkey)
             return true;
 
-        return false;
-
-        // if f.key is unique
-        //return tableKeySchema.ForeignKeyMemberColumns.All(column => column.IsUnique);
+        #region Modified
+        //return false; //注释了这行
+        // 添加了这行 判断是否有唯一约束
+        return tableKeySchema.Table.UniqueConstraints.Any(c => c.Columns.Any(d => d.Name == foreignColumn));
+        #endregion
     }
 
 

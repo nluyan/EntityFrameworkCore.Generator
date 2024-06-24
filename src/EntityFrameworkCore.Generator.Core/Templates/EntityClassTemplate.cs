@@ -127,6 +127,13 @@ public class EntityClassTemplate : CodeTemplateBase
         CodeBuilder.AppendLine("#region Generated Properties");
         foreach (var property in _entity.Properties)
         {
+
+            #region Modified
+            //跳过Id属性
+            if (property.PropertyName == "Id")
+                continue;
+            #endregion
+
             var propertyType = property.SystemType.ToType();
             var propertyName = property.PropertyName.ToSafeName();
 
